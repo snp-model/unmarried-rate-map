@@ -74,19 +74,6 @@
   font-size: 1rem;
 }
 
-.comparison-card__delta {
-  font-size: 0.76rem;
-  font-weight: 700;
-}
-
-.comparison-card__delta.is-positive {
-  color: #b2182b;
-}
-
-.comparison-card__delta.is-negative {
-  color: #2166ac;
-}
-
 .no-data-note {
   margin-top: 12px;
   color: var(--color-text-secondary);

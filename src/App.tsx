@@ -389,9 +389,6 @@ function App() {
     if (bounds) mapRef.current?.fitBounds(bounds, { padding: 70, maxZoom: 8, duration: 850 });
   }
 
-  const delta = selectedSummary && selectedSummary.rate !== null && selectedSummary.nationalRate !== null
-    ? selectedSummary.rate - selectedSummary.nationalRate
-    : null;
   const selectedColorValue = selectedSummary?.rate ?? null;
 
   return (
@@ -490,11 +487,6 @@ function App() {
                         ? `${selectedSummary.nationalRate >= 0 ? "+" : "−"}${Math.abs(selectedSummary.nationalRate).toFixed(1)} pt`
                         : `${selectedSummary.nationalRate.toFixed(1)}%`}
                   </strong>
-                  {delta !== null && (
-                    <span className={`comparison-card__delta${delta >= 0 ? " is-positive" : " is-negative"}`}>
-                      {delta >= 0 ? "+" : "−"}{Math.abs(delta).toFixed(1)} pt
-                    </span>
-                  )}
                 </div>
               ) : (
                 <p className="no-data-note">この地域・条件の値は公表されていません。</p>
