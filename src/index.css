@@ -1,0 +1,515 @@
+/* ===================================
+   URBANITY MAP - Design System
+   Aesthetic: Editorial/Magazine meets Data Visualization
+   Theme: Light, with warm accents and subtle shadows
+   =================================== */
+
+/* --- Design Tokens --- */
+:root {
+  /* Color Palette - Light Theme */
+  /* Color Palette - Light Theme (Refined) */
+  --color-bg-deep: #f0f2f5;
+  --color-bg-surface: #ffffff;
+  --color-bg-elevated: #ffffff;
+  --color-glass: rgba(255, 255, 255, 0.75);
+  --color-glass-border: rgba(255, 255, 255, 0.6);
+  --color-border-subtle: rgba(0, 0, 0, 0.06);
+
+  --color-text-primary: #111827;
+  --color-text-main: #111827;
+  --color-text-secondary: #4b5563;
+  --color-text-muted: #9ca3af;
+
+  /* Urbanity Gradient (Rural to Urban) */
+  --color-rural: #6366f1;
+  /* Indigo */
+  --color-suburban: #8b5cf6;
+  /* Violet */
+  --color-urban: #f97316;
+  /* Coral/Orange */
+  --color-metro: #ea580c;
+  /* Deep Orange */
+
+  --color-accent: #f97316;
+  --color-accent-light: #fed7aa;
+  --color-accent-glow: rgba(249, 115, 22, 0.15);
+
+  --color-primary: #f97316;
+  --color-primary-light: #ffedd5;
+  --color-primary-dark: #ea580c;
+
+  /* Typography */
+  --font-display: 'Outfit', sans-serif;
+  --font-body: 'Noto Sans JP', sans-serif;
+
+  /* Spacing */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+
+  /* Effects */
+  /* Effects */
+  --blur-glass: 20px;
+  --shadow-soft: 0 2px 10px rgba(0, 0, 0, 0.03);
+  --shadow-medium: 0 12px 24px -4px rgba(0, 0, 0, 0.08), 0 4px 12px -2px rgba(0, 0, 0, 0.04);
+  --shadow-float: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --- Reset & Base --- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  color-scheme: light only;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bg-deep);
+  color: var(--color-text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- Layout --- */
+.app-container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+/* --- Sidebar --- */
+.sidebar {
+  flex-shrink: 0;
+  width: 380px;
+  height: 100%;
+  z-index: 10;
+
+  background: var(--color-glass);
+  backdrop-filter: blur(var(--blur-glass));
+  -webkit-backdrop-filter: blur(var(--blur-glass));
+  border-right: 1px solid var(--color-glass-border);
+  box-shadow: var(--shadow-medium);
+
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-xl);
+  overflow-y: auto;
+
+  animation: slideIn 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* --- Logo & Branding --- */
+.brand {
+  margin-bottom: var(--space-md);
+}
+
+.brand__logo {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-xs);
+  background: linear-gradient(135deg, var(--color-text-primary) 0%, var(--color-text-secondary) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  width: fit-content;
+}
+
+/* --- Search Bar --- */
+.search-container {
+  margin-bottom: var(--space-xl);
+}
+
+.search-input {
+  width: 100%;
+  padding: var(--space-md) var(--space-lg);
+  background: var(--color-bg-surface);
+  border: 1px solid transparent;
+  border-radius: 12px;
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: var(--transition-smooth);
+  box-shadow: var(--shadow-soft);
+}
+
+.search-input::placeholder {
+  color: var(--color-text-muted);
+  font-weight: 400;
+}
+
+.search-input:focus {
+  outline: none;
+  background: #ffffff;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 4px var(--color-accent-glow), var(--shadow-medium);
+}
+
+/* --- Info Panel --- */
+.info-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.info-panel__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.info-panel__empty-icon {
+  font-size: 2.5rem;
+  margin-bottom: var(--space-md);
+  opacity: 0.5;
+}
+
+/* --- Region Card --- */
+.region-card {
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-glass-border);
+  border-radius: 20px;
+  padding: var(--space-xl);
+  box-shadow: var(--shadow-float);
+  animation: fadeIn 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.region-card__name {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: var(--space-xs);
+  color: var(--color-text-primary);
+}
+
+.region-card__prefecture {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-lg);
+}
+
+/* PC用のregion-card__header（デフォルトスタイル） */
+.region-card__header {
+  display: block; /* PCではブロック表示 */
+}
+
+/* PC用の出典表示 */
+.region-card__source {
+  font-size: 0.7rem;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-md);
+  text-align: right;
+}
+
+/* --- Score Display --- */
+.score-display {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
+
+.score-display__value {
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--color-accent);
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.score-display__value--small {
+  font-size: 2.2rem;
+}
+
+.score-display__max {
+  font-size: 1.25rem;
+  color: var(--color-text-muted);
+}
+
+/* --- Score Breakdown --- */
+.breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.breakdown__item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.breakdown__label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+}
+
+.breakdown__bar {
+  height: 8px;
+  background: var(--color-bg-deep);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.breakdown__fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.6s ease-out;
+}
+
+.breakdown__fill--cvs {
+  background: linear-gradient(90deg, var(--color-suburban) 0%, var(--color-accent) 100%);
+}
+
+.breakdown__fill--super {
+  background: linear-gradient(90deg, var(--color-rural) 0%, var(--color-suburban) 100%);
+}
+
+.breakdown__fill--restaurant {
+  background: linear-gradient(90deg, var(--color-accent) 0%, var(--color-metro) 100%);
+}
+
+/* --- Legend --- */
+.legend {
+  margin-top: auto;
+  padding-top: var(--space-xl);
+  border-top: 1px solid var(--color-glass-border);
+}
+
+.legend__gradient-container {
+  position: relative;
+  margin-bottom: var(--space-sm);
+}
+
+.legend__gradient {
+  height: 8px;
+  border-radius: 4px;
+  background: linear-gradient(90deg,
+      var(--color-rural) 0%,
+      var(--color-suburban) 35%,
+      var(--color-accent) 70%,
+      var(--color-metro) 100%);
+}
+
+.legend__indicator {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 16px;
+  height: 16px;
+  background: var(--color-accent);
+  border: 3px solid white;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: left 0.3s ease-out;
+}
+
+.legend__labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.7rem;
+  color: var(--color-text-muted);
+}
+
+/* --- Map Container --- */
+.map-container {
+  flex: 1;
+  height: 100%;
+  min-width: 0;
+  background: var(--color-bg-deep);
+}
+
+.maplibregl-map {
+  width: 100%;
+  height: 100%;
+}
+
+/* MapLibre Controls Styling */
+.maplibregl-ctrl-group {
+  background: var(--color-glass) !important;
+  border: 1px solid var(--color-glass-border) !important;
+  border-radius: 12px !important;
+  box-shadow: var(--shadow-soft) !important;
+}
+
+.maplibregl-ctrl-group button {
+  background-color: transparent !important;
+  color: var(--color-text-primary) !important;
+}
+
+.maplibregl-ctrl-group button:hover {
+  background-color: var(--color-bg-elevated) !important;
+}
+
+/* --- Loading State --- */
+.loading-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg-deep);
+  z-index: 100;
+}
+
+.loading-spinner {
+  width: 48px;
+  height: 48px;
+  border: 3px solid var(--color-glass-border);
+  border-top-color: var(--color-accent);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    max-height: 35vh;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border-right: none;
+    border-top: 1px solid var(--color-glass-border);
+    border-radius: 24px 24px 0 0;
+    padding: var(--space-md);
+  }
+
+  .brand {
+    display: none;
+  }
+
+  /* モバイル用region-cardレイアウト */
+  .region-card {
+    padding: var(--space-sm);
+    box-shadow: none;
+  }
+
+  /* 1行目: 地名(左) + スコア(右) */
+  .region-card__header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+  }
+
+  .region-card__info {
+    flex: 1;
+  }
+
+  .region-card__name {
+    font-size: 1.3rem;
+    margin-bottom: 0;
+  }
+
+  .region-card__prefecture {
+    font-size: 0.75rem;
+    margin-bottom: 0;
+  }
+
+  .score-display {
+    flex-direction: row;
+    align-items: baseline;
+    margin-bottom: 0;
+    gap: 2px;
+  }
+
+  .score-display__value {
+    font-size: 2.8rem !important;
+    line-height: 1;
+  }
+
+  .score-display__max {
+    font-size: 0.7rem;
+  }
+
+  /* 2行目: 出典 */
+  .region-card__source {
+    font-size: 0.6rem;
+    color: var(--color-text-muted);
+    margin-bottom: 8px;
+  }
+
+  /* スコアインジケーターをコンパクトに */
+  .score-indicator {
+    margin-top: 8px;
+  }
+
+  /* 統計リストをコンパクトに */
+  .stats-list {
+    margin-top: 8px;
+    padding-top: 8px;
+  }
+
+  .stats-list__item {
+    min-height: 40px;
+    padding: 6px 36px 6px 8px;
+  }
+
+  .map-container {
+    height: 100%;
+  }
+}

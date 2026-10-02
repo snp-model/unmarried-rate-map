@@ -1,0 +1,777 @@
+/* App-specific styles (component overrides) */
+
+/* App Container animation */
+.app-container {
+  opacity: 0;
+  animation: appFadeIn 0.6s ease-out 0.1s forwards;
+}
+
+@keyframes appFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* Region card hover effect */
+.region-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.region-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
+}
+
+/* Search input focus animation */
+.search-input:focus {
+  animation: searchPulse 0.3s ease-out;
+}
+
+@keyframes searchPulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.005);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Breakdown bars entrance animation */
+.breakdown__fill {
+  animation: barGrow 0.8s ease-out forwards;
+  transform-origin: left;
+}
+
+@keyframes barGrow {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* Staggered animation for breakdown items */
+.breakdown__item:nth-child(1) .breakdown__fill {
+  animation-delay: 0.1s;
+}
+
+.breakdown__item:nth-child(2) .breakdown__fill {
+  animation-delay: 0.2s;
+}
+
+.breakdown__item:nth-child(3) .breakdown__fill {
+  animation-delay: 0.3s;
+}
+
+/* Custom scrollbar for sidebar */
+.sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: var(--color-glass-border);
+  border-radius: 3px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted);
+}
+
+/* モード切り替えスイッチ */
+.mode-switcher {
+  display: flex;
+  background: var(--color-bg-deep);
+  border-radius: 12px;
+  padding: 4px;
+  margin-bottom: 24px;
+  border: 1px solid var(--color-border-subtle);
+}
+
+.mode-switcher__btn {
+  flex: 1;
+  padding: 8px 12px;
+  border: none;
+  background: transparent;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.mode-switcher__btn:hover {
+  color: var(--color-text-primary);
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.mode-switcher__btn--active {
+  background: #ffffff;
+  color: var(--color-primary);
+  font-weight: 600;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.mode-switcher__btn--active:hover {
+  background: var(--color-primary-light);
+  color: var(--color-bg-dark);
+}
+
+/* 検索ドロップダウン */
+.search-container {
+  position: relative;
+}
+
+.search-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  margin-top: 4px;
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 100;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.search-dropdown__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 12px 16px;
+  border: none;
+  background: transparent;
+  color: #333333;
+  font-size: 0.9rem;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.15s ease;
+}
+
+.search-dropdown__item:hover {
+  background: #f5f5f5;
+}
+
+.search-dropdown__item:not(:last-child) {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.search-dropdown__name {
+  font-weight: 500;
+  color: #1a1a1a;
+}
+
+.search-dropdown__prefecture {
+  font-size: 0.75rem;
+  color: #666666;
+}
+
+/* フローティングフィルターパネル */
+.floating-filter-panel {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 300px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 16px;
+  padding: 12px 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  z-index: 2;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  animation: slideDown 0.5s ease-out 0.2s forwards;
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+@keyframes slideDown {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.floating-filter-panel__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.floating-filter-panel__title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--color-text-main);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.floating-filter-panel__title::before {
+  content: "";
+  display: block;
+  width: 4px;
+  height: 12px;
+  background: var(--color-primary);
+  border-radius: 2px;
+}
+
+.floating-filter-panel__range {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  font-feature-settings: "tnum";
+}
+
+/* デュアルハンドル範囲スライダー */
+.range-slider {
+  position: relative;
+  height: 20px;
+}
+
+.range-slider__gradient {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  transition: clip-path 0.1s ease;
+}
+
+.range-slider__inactive {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 6px;
+  background: rgba(80, 80, 80, 0.8);
+  border-radius: 3px;
+}
+
+.range-slider__inactive--left {
+  left: 0;
+}
+
+.range-slider__inactive--right {
+  right: 0;
+}
+
+.range-slider__input {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  pointer-events: none;
+  outline: none;
+}
+
+.range-slider__input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background: #ffffff;
+  border-radius: 50%;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  border: 2px solid rgba(0, 0, 0, 0.2);
+}
+
+.range-slider__input::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.range-slider__input::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: #ffffff;
+  border-radius: 50%;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  pointer-events: auto;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.range-slider__labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4px;
+  font-size: 0.65rem;
+  color: var(--color-text-muted);
+}
+
+/* スコアインジケーター */
+.score-indicator {
+  margin-top: 24px;
+  position: relative;
+  padding: 0 8px;
+}
+
+.score-indicator__bar {
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  opacity: 0.8;
+}
+
+.score-indicator__thumb {
+  position: absolute;
+  top: -4px;
+  width: 14px;
+  height: 14px;
+  background: white;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.score-indicator__labels {
+  position: relative;
+  height: 20px;
+  margin-top: 8px;
+}
+
+.score-indicator__label {
+  position: absolute;
+  transform: translateX(-50%);
+  font-size: 0.65rem;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+  top: 0;
+}
+
+/* モードトグルスイッチ */
+.mode-toggle {
+  margin-top: auto;
+  padding-top: 24px;
+}
+
+.mode-toggle__label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.mode-toggle__text {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.mode-toggle__switch {
+  position: relative;
+  width: 48px;
+  height: 24px;
+}
+
+.mode-toggle__switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.mode-toggle__slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #cccccc;
+  border: 1px solid #bbbbbb;
+  border-radius: 24px;
+  transition: 0.3s;
+}
+
+.mode-toggle__slider::before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.mode-toggle__switch input:checked + .mode-toggle__slider {
+  background-color: #f59e0b;
+}
+
+.mode-toggle__switch input:checked + .mode-toggle__slider::before {
+  transform: translateX(24px);
+}
+
+/* 免責事項 */
+.disclaimer {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--color-glass-border);
+}
+
+.disclaimer__details {
+  width: 100%;
+}
+
+.disclaimer__summary {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+  padding: 4px 0;
+  transition: color 0.2s ease;
+}
+
+.disclaimer__summary::-webkit-details-marker {
+  display: none;
+}
+
+.disclaimer__summary::before {
+  content: "▶ ";
+  display: inline-block;
+  margin-right: 4px;
+  transition: transform 0.2s ease;
+}
+
+.disclaimer__details[open] .disclaimer__summary::before {
+  transform: rotate(90deg);
+}
+
+.disclaimer__summary:hover {
+  color: var(--color-text-main);
+}
+
+.disclaimer__content {
+  margin-top: 8px;
+  padding: 8px 0;
+  font-size: 0.7rem;
+  line-height: 1.6;
+}
+
+.disclaimer__title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-text-main);
+  margin: 12px 0 4px 0;
+}
+
+.disclaimer__title:first-child {
+  margin-top: 0;
+}
+
+.disclaimer__text {
+  margin: 6px 0;
+  color: var(--color-text-secondary);
+}
+
+.disclaimer__text:first-child {
+  margin-top: 0;
+}
+
+.disclaimer__text:last-child {
+  margin-bottom: 0;
+}
+
+/* 統計値一覧 */
+.stats-list {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.stats-list__item {
+  appearance: none;
+  width: 100%;
+  min-height: 44px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 38px 9px 12px;
+  border: 1px solid #d7dee8;
+  background: #ffffff;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  border-radius: 10px;
+  margin-bottom: 6px;
+  transition: background 0.18s ease, border-color 0.18s ease,
+    box-shadow 0.18s ease, transform 0.18s ease;
+  position: relative;
+}
+
+.stats-list__item:hover {
+  background: #fffaf5;
+  border-color: var(--color-primary);
+  box-shadow: 0 3px 10px rgba(17, 24, 39, 0.09);
+  transform: translateY(-1px);
+}
+
+.stats-list__item:focus-visible {
+  outline: 3px solid rgba(249, 115, 22, 0.35);
+  outline-offset: 2px;
+}
+
+.stats-list__item:active {
+  transform: translateY(0);
+}
+
+.stats-list__item::after {
+  content: "›";
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  display: flex;
+  width: 20px;
+  height: 20px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #fff1e5;
+  transform: translateY(-50%);
+  color: var(--color-primary-dark);
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1;
+  transition: transform 0.18s ease, background 0.18s ease, color 0.18s ease;
+}
+
+.stats-list__item:hover::after {
+  transform: translate(2px, -50%);
+}
+
+.stats-list__item--active {
+  background: var(--color-primary-light);
+  border-color: var(--color-primary);
+  box-shadow: inset 3px 0 0 var(--color-primary);
+}
+
+.stats-list__item--active:hover {
+  background: var(--color-primary-light);
+  transform: none;
+  box-shadow: inset 3px 0 0 var(--color-primary);
+}
+
+.stats-list__item--active::after {
+  content: "✓";
+  background: var(--color-primary);
+  color: #ffffff;
+  font-size: 0.72rem;
+}
+
+.stats-list__label {
+  flex: 1;
+  min-width: 0;
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  transition: color 0.2s ease;
+}
+
+.stats-list__item:hover .stats-list__label {
+  color: var(--color-primary);
+}
+
+.stats-list__item--active .stats-list__label {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.stats-list__value {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  text-align: right;
+  word-break: break-word;
+  max-width: 52%;
+}
+
+.stats-list__item--active .stats-list__value {
+  color: var(--color-primary-dark);
+}
+
+/* 追加: インライン出典表示のスタイル */
+.stats-list__source {
+  width: 100%;
+  font-size: 0.65rem;
+  color: var(--color-text-muted);
+  text-align: right;
+  margin-top: 4px;
+  line-height: 1.2;
+  opacity: 0.9;
+}
+
+/* AdSense Banner Container */
+.ad-banner-container {
+  position: absolute;
+  bottom: 0;
+  left: 380px;
+  /* Sidebar width on desktop */
+  width: calc(100% - 380px);
+  z-index: 50;
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 45px;
+  display: none; /* 審査中のため一時的に非表示 */
+}
+
+.ad-banner-wrapper {
+  pointer-events: auto;
+  width: 100%;
+  max-width: 728px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+  .ad-banner-container {
+    left: 0;
+    width: 100%;
+    padding-bottom: 15px;
+  }
+
+  /* フローティングフィルターパネルを左上に配置 */
+  .floating-filter-panel {
+    top: 10px;
+    left: 10px;
+    right: auto;
+    width: calc(100vw - 180px); /* 診断ボタンとのスペースを確保 */
+    max-width: 200px;
+    padding: 10px 14px;
+    border-radius: 12px;
+  }
+
+  .floating-filter-panel__title {
+    font-size: 0.7rem;
+  }
+
+  .floating-filter-panel__range {
+    font-size: 0.75rem;
+  }
+
+  .range-slider__labels {
+    font-size: 0.6rem;
+  }
+
+  /* モバイルでサイドバー内の検索を非表示 */
+  .sidebar .search-container {
+    display: none;
+  }
+}
+/* モバイル用検索ボタン */
+.mobile-search-trigger-btn {
+  position: absolute;
+  top: 20px;
+  right: 220px; /* 診断ボタンの左側 */
+  z-index: 10;
+  background: white;
+  color: #666;
+  padding: 12px;
+  border-radius: 50%;
+  border: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: none; /* デスクトップでは非表示 */
+  width: 48px;
+  height: 48px;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mobile-search-trigger-btn:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* モバイル用検索モーダル */
+.mobile-search-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 2000;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 80px;
+  backdrop-filter: blur(4px);
+}
+
+.mobile-search-content {
+  background: white;
+  width: 90%;
+  max-width: 500px;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.mobile-search-content .search-input {
+  width: 100%;
+  padding: 16px;
+  font-size: 1rem;
+}
+
+.mobile-search-content .search-dropdown {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+/* モバイルでの表示設定 */
+@media (max-width: 768px) {
+  .mobile-search-trigger-btn {
+    display: flex;
+    top: 60px; /* 診断ボタン(top: 10px) + 高さ + 余白 */
+    bottom: auto;
+    right: 10px;
+    padding: 10px;
+    width: 44px;
+    height: 44px;
+    font-size: 1.1rem;
+  }
+}
