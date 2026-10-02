@@ -478,8 +478,8 @@ function App() {
                 </div>
               </div>
               {selectedSummary.rate !== null ? (
-                <div className="comparison-card">
-                  <span className="comparison-card__label">全国平均</span>
+                <div className="region-card__metric">
+                  <span className="region-card__metric-label">全国平均</span>
                   <strong>
                     {selectedSummary.nationalRate === null
                       ? "—"
@@ -491,8 +491,8 @@ function App() {
               ) : (
                 <p className="no-data-note">この地域・条件の値は公表されていません。</p>
               )}
-              <div className="region-card__population">
-                <span className="region-card__population-label">対象人口</span>
+              <div className="region-card__metric">
+                <span className="region-card__metric-label">対象人口</span>
                 <strong>
                   {displayMode === "difference"
                     ? `男性 ${formatPopulation(selectedSummary.malePopulation)} ・ 女性 ${formatPopulation(selectedSummary.femalePopulation)}`

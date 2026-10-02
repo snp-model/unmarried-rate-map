@@ -52,28 +52,6 @@
   paint-order: stroke fill;
 }
 
-.comparison-card {
-  display: flex;
-  align-items: baseline;
-  gap: 8px;
-  margin-top: 12px;
-  padding: 12px 14px;
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
-  background: transparent;
-}
-
-.comparison-card__label {
-  flex: 1;
-  color: var(--color-text-secondary);
-  font-size: 0.8rem;
-}
-
-.comparison-card strong {
-  color: #334155;
-  font-size: 1rem;
-}
-
 .no-data-note {
   margin-top: 12px;
   color: var(--color-text-secondary);
@@ -86,7 +64,7 @@
   font-size: 0.68rem;
 }
 
-.region-card__population {
+.region-card__metric {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
@@ -96,11 +74,11 @@
   font-size: 0.82rem;
 }
 
-.region-card__population-label {
+.region-card__metric-label {
   color: var(--color-text-secondary);
 }
 
-.region-card__population strong {
+.region-card__metric strong {
   font-size: 0.9rem;
   font-variant-numeric: tabular-nums;
   text-align: right;
@@ -230,11 +208,6 @@
 
   .score-display__value {
     font-size: 2rem !important;
-  }
-
-  .comparison-card {
-    margin-top: 8px;
-    padding: 8px 10px;
   }
 
   .region-card__source {
