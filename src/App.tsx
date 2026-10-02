@@ -398,7 +398,7 @@ function App() {
     <div className="app-container">
       <aside className="sidebar">
         <header className="brand">
-          <div className="brand__logo">未婚率マップ</div>
+          <div className="brand__logo">全国未婚率マップ</div>
         </header>
 
         <div className="search-container">
